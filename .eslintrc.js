@@ -8,6 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 11,
   },
+  ignorePatterns: ["**/templates/**"],
   plugins: ['prettier'],
   rules: {
     "semi": "error",
