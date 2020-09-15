@@ -24,8 +24,7 @@ option.
 When only the project name argument is provided then you will be prompted
 for more info.
 
-![Labs API prompts](spa-prompts.png)
-
+![Labs API prompts](api-prompts.png)
 
 ``` bash
 Usage:
@@ -43,3 +42,56 @@ Options:
 Arguments:
   name  # Name of Project  Type: String  Required: true
 ```
+
+## Prompts / Options
+
+The following prompts will provide additional configuration and examples
+
+### Does your team have Data Science members
+
+#### Option
+
+`--hasDS` or `-d` - passing `false` to the option will turn it off.
+
+#### Prompt
+
+If the answer is `Y` then the following items will be added to the project:
+
+- modules `plotly.js` and `react-plotly.js`
+- an example data visualization page component `ExampleDataViz` using a DS API.
+
+### Program
+
+#### Option
+
+`--program` or `-p` - pass `labs` or `bw`
+
+#### Prompt
+
+The program choices are `BW` and `Labs`
+
+- `BW` will generate the base configuration.
+- `Labs` will add the following elements
+  - Okta identity management service
+  - Secure routes using Okta library
+  - Secure BE API example using Okta JWT
+  - [Ant Design](https://docs.labs.lambdaschool.com/labs-spa-starter/styling-with-ant-design) configuration and theme
+  - [Storybook](https://docs.labs.lambdaschool.com/labs-spa-starter/storybook) documentation
+  - [AWS Amplify](https://docs.labs.lambdaschool.com/labs-spa-starter/untitled) config file
+
+## Enter your Github repo HTTPS git url
+
+#### Option
+
+`--repoUrl` or `-r` - leave empty (`-r`) to turn off
+
+#### Prompt
+
+This is the git https url (eg https://github.com/Lambda-School-Labs/gen-test-git.git)
+
+When this value is provided then the generator will do the following:
+
+- init the git repo with this URL as the remote
+- create a main branch
+- stage and commit the generated files
+- push the branch to github
