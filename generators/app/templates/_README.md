@@ -14,7 +14,6 @@ Read more at <https://docs.labs.lambdaschool.com/labs-api-strarter/>
 
 Labs teams must follow all [Labs Engineering Standards](https://labs.lambdaschool.com/topics/node-js/).
 
-
 ## Getting Started
 
 ### Enviornment Variables
