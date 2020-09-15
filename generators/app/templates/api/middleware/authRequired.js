@@ -1,8 +1,8 @@
-<% if (program === 'bw') { %>/*
-  * This is an example of using middleware to secure routers.
-  */<% } %>
+/*
+ * This is an example of using middleware to secure routers.
+ */<% if (program === 'labs') { %>
 const Profiles = require('../profile/profileModel');
-const createError = require('http-errors');<% if (program === 'bw') { %>
+const createError = require('http-errors');
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 const oktaVerifierConfig = require('../../config/okta');
 const oktaJwtVerifier = new OktaJwtVerifier(oktaVerifierConfig.config);
@@ -26,7 +26,7 @@ const authRequired = async (req, res, next) => {
 
     if (!match) throw new Error('Missing idToken');
 
-    const idToken = match[1];<% if (program === 'bw') { %>
+    const idToken = match[1];<% if (program === 'labs') { %>
     oktaJwtVerifier
       .verifyAccessToken(idToken, oktaVerifierConfig.expectedAudience)
       .then(async (data) => {
@@ -38,7 +38,9 @@ const authRequired = async (req, res, next) => {
           throw new Error('Unable to process idToken');
         }
         next();
-      });<% } else { %>next()<% } %>
+      });<% } else { %>
+    // add custom code here to verify the JWT idToken
+    next()<% } %>
   } catch (err) {
     next(createError(401, err.message));
   }
