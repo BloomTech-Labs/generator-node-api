@@ -2,7 +2,7 @@ const BaseGenerator = require('@lambdalabs/base-generator');
 const klr = require('kleur');
 const fs = require('fs');
 const defaultFileList = require('./default-templates');
-var path = require('path');
+const path = require('path');
 const { exit } = require('process');
 
 module.exports = class extends BaseGenerator {
@@ -13,49 +13,15 @@ module.exports = class extends BaseGenerator {
       includeCoverageBadge: false,
     };
     this.templateFiles = [].concat(defaultFileList);
-
+    
     this.argument('name', {
       type: String,
       desc: 'Name of Project',
     });
 
-    this._makePromptOption(
-      'program',
-      {
-        type: 'list',
-        message: 'What is the project type?',
-        choices: [
-          {
-            name: 'Buid Weeks',
-            value: 'bw',
-          },
-          {
-            name: 'Labs',
-            value: 'labs',
-          },
-        ],
-        default: 'labs',
-        store: true,
-      },
-      {
-        type: String,
-        alias: 'p',
-        desc: 'Which program will this be used for: "bw" or "labs"',
-      }
-    );
-    this._makePromptOption(
-      'hasDS',
-      {
-        type: 'confirm',
-        message: 'Does your project have Data Science team members?',
-        default: false,
-      },
-      {
-        type: (val) => { return (val==='false' ? false : true)},
-        alias: 'd',
-        desc: 'project has DS team members',
-      }
-    );
+    this._makeProgram();
+    this._makeHasDS();
+    this._makeRepoUrl();
   }
 
   initializing() {
@@ -66,16 +32,17 @@ module.exports = class extends BaseGenerator {
         this.options.name
       )}`
     );
+    
     this._removePrompts();
     this.initialData.projectName = this.options.name;
-    this.projectDirName = this.initialData.projectName + '-be';
+    this.projectDirName = this.initialData.projectName + '-api';
     this.destinationRoot(path.join(this.destinationPath(), '/' + this.projectDirName));
+    this.options.repoUrl = (this.options.repoUrl === 'true' || this.options.repoUrl === '') ? false : this.options.repoUrl;
   }
 
   prompting() {
     return this.prompt(this.prompts).then((props) => {
-      this.answers = props;
-      this.data = Object.assign({}, this.initialData, this.answers);
+      this.data = Object.assign({}, this.initialData, props);
     });
   }
 
@@ -95,7 +62,6 @@ module.exports = class extends BaseGenerator {
     if (this.data.program === 'bw') {
       ignorePaths.push('**/config/okta.js');
     }
-
     this.templateFiles.forEach((file) => {
       return this.fs.copyTpl(
         this.templatePath(file.src),
@@ -109,5 +75,21 @@ module.exports = class extends BaseGenerator {
 
   installing() {
     this.npmInstall();
+  }
+
+  end() {
+    if (!fs.existsSync('.git')) {
+      this.log(`================\nNow lets setup the git repo for ${this.options.repoUrl || this.options.name}.\n\n`);
+
+      this.spawnCommandSync('git', ['init']);
+      this.spawnCommandSync('git', ['checkout', '-b', 'main']);
+      this.spawnCommandSync('git', ['add', '--all']);
+      this.spawnCommandSync('git', ['commit', '-m', '"initial commit from labs spa generator"']);
+      if (this.options.repoUrl) {
+        this.spawnCommandSync('git', ['remote', 'add', 'origin', this.options.repoUrl]);
+        this.log('pushing repo to github');
+        this.spawnCommandSync('git', ['push', '-u', 'origin', 'main']);
+      }
+    }
   }
 }
