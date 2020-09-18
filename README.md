@@ -19,7 +19,7 @@ Create an API app for the labs 27 gigantic product and answer prompts
 Create an API app for the Labs 26 gigantic product with the `labs` program
 option.
 
-`labs spa labs26-gigantic --program-name=labs`
+`labs spa labs26-gigantic --program=labs`
 
 When only the project name argument is provided then you will be prompted
 for more info.
@@ -51,7 +51,7 @@ The following prompts will provide additional configuration and examples
 
 #### Option
 
-`--hasDS` or `-d` - passing `false` to the option will turn it off.
+`--hasDS` or `-d` - passing `false` to the option will turn it off. (`--hasDS=false`)
 
 #### Prompt
 
