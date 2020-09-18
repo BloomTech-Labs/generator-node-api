@@ -1,6 +1,6 @@
 {
   "name": "@lambdalabs/generator-api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A yeoman generator for the Labs node api scaffolding",
   "main": "index.js",
   "files": [
