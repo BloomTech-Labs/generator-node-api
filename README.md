@@ -28,7 +28,7 @@ for more info.
 
 ``` bash
 Usage:
-  yo api:app <name> [options]
+  labs @lambdalabs/api[:app] <name> [options]
 
 Options:
   -h,   --help           # Print the generator's options and usage
