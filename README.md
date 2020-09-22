@@ -14,12 +14,12 @@ options. Common elements found in all configurations are:
 
 Create an API app for the labs 27 gigantic product and answer prompts
 
-`labs api labs27-gigantic`
+`labs @lambdalabs/api labs27-gigantic`
 
 Create an API app for the Labs 26 gigantic product with the `labs` program
 option.
 
-`labs spa labs26-gigantic --program=labs`
+`labs @lambdalabs/spa labs26-gigantic --program=labs`
 
 When only the project name argument is provided then you will be prompted
 for more info.
@@ -79,7 +79,7 @@ The program choices are `BW` and `Labs`
   - [Storybook](https://docs.labs.lambdaschool.com/labs-spa-starter/storybook) documentation
   - [AWS Amplify](https://docs.labs.lambdaschool.com/labs-spa-starter/untitled) config file
 
-## Enter your Github repo HTTPS git url
+### Enter your Github repo HTTPS git url
 
 #### Option
 

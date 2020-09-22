@@ -1,6 +1,6 @@
 {
   "name": "@lambdalabs/generator-api",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "A yeoman generator for the Labs node api scaffolding",
   "main": "index.js",
   "files": [
@@ -23,7 +23,8 @@
   "homepage": "https://github.com/Lambda-School-Labs/generator-node-api",
   "bugs": "https://github.com/Lambda-School-Labs/generator-node-api/issues",
   "dependencies": {
-    "@lambdalabs/base-generator": "^1.0.3"
+    "@lambdalabs/base-generator": "^1.0.3",
+    "kleur": "^4.1.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^6.11.0",
@@ -33,7 +34,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "kleur": "^4.1.1",
     "prettier": "^2.1.1",
     "yeoman-test": "^3.0.0"
   }
