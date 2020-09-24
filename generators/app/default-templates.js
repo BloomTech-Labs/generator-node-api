@@ -8,7 +8,7 @@ module.exports = [
   { src: '.env.sample', dest: '.env' },
   { src: '.eslintignore' },
   { src: '.eslintrc.js' },
-  { src: '.gitignore' },
+  { src: '_gitignore', dest: '.gitignore' },
   { src: '.prettierignore' },
   { src: '.prettierrc.js' },
   { src: 'docker-compose.yml' },
