@@ -84,7 +84,7 @@ module.exports = class extends BaseGenerator {
       this.spawnCommandSync('git', ['init']);
       this.spawnCommandSync('git', ['checkout', '-b', 'main']);
       this.spawnCommandSync('git', ['add', '--all']);
-      this.spawnCommandSync('git', ['commit', '-m', '"initial commit from labs spa generator"']);
+      this.spawnCommandSync('git', ['commit', '-m', '"initial commit from labs api generator"']);
       if (this.options.repoUrl) {
         this.spawnCommandSync('git', ['remote', 'add', 'origin', this.options.repoUrl]);
         this.log('pushing repo to github');
