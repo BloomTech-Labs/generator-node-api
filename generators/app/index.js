@@ -58,6 +58,7 @@ module.exports = class extends BaseGenerator {
 
     if (!this.data.hasDS) {
       ignorePaths.push('**/dsService/**');
+      ignorePaths.push('**/config/dsConfig.js');
     }
     if (this.data.program === 'bw') {
       ignorePaths.push('**/config/okta.js');
