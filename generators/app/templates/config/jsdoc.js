@@ -2,10 +2,9 @@ module.exports = {
   definition: {
     openapi: '3.0.1',
     info: {
-      title: '<%= projectName %>',
+      title: '<%= projectName.split("-").map(function(word) { return word[0].toUpperCase() + word.substr(1) }).join(" ") %>',
       version: '0.1.0',
-      description:
-        '<%= projectName %>',
+      description: '<%= projectName %>',
       license: {
         name: 'MIT',
         url: 'https://en.wikipedia.org/wiki/MIT_License',
