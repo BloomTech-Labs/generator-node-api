@@ -5,6 +5,7 @@ module.exports = [
   { src: 'CODE_OF_CONDUCT.md' },
   { src: 'CONTRIBUTING.md' },
   { src: '.dockerignore' },
+  { src: '.env.sample', dest: '.env.sample' },
   { src: '.env.sample', dest: '.env' },
   { src: '.eslintignore' },
   { src: '.eslintrc.js' },
