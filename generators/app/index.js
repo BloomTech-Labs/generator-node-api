@@ -3,6 +3,7 @@ const klr = require('kleur');
 const fs = require('fs');
 const defaultFileList = require('./default-templates');
 const path = require('path');
+const util = require('util');
 const { exit } = require('process');
 
 module.exports = class extends BaseGenerator {
@@ -58,18 +59,21 @@ module.exports = class extends BaseGenerator {
 
     if (!this.data.hasDS) {
       ignorePaths.push('**/dsService/**');
-      ignorePaths.push('**/config/dsConfig.js');
+      ignorePaths.push('**/dsConfig.js');
     }
     if (this.data.program === 'bw') {
       ignorePaths.push('**/config/okta.js');
     }
+
+    const copyOpts = { globOptions: { ignore: ignorePaths } };
+    
     this.templateFiles.forEach((file) => {
       return this.fs.copyTpl(
         this.templatePath(file.src),
         this.destinationPath(file.dest || file.src),
         this.data,
         {},
-        { globOptions: { ignore: ignorePaths } }
+        copyOpts
       );
     });
   }
