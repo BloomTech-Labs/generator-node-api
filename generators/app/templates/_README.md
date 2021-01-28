@@ -109,7 +109,7 @@ There are 3 options to get postgresql installed locally [Choose one]:
 
 - create your project repo by forking or using this as a template.
 - run: `npm install` to download all dependencies.
-- confirm correct env variables in your `.env` file.
+- run: `cp .en.sample .env` and update the environment variables to match your local project setup.
 - run: `npm run knex migrate:latest` to create the starting schema.
 - run: `npm run knex seed:run` to populate your db with some data.
 - run: `npm run tests` to confirm all is setup and tests pass.
